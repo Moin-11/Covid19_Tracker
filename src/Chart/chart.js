@@ -10,9 +10,9 @@ const ChartDisplay = ({
   return (
     <div
       style={{
-        minHeight: "50vh",
+        height: "100%",
         width: "100%",
-        margin: "30px 20px 20px 30px",
+        margin: "60px 20px 20px 30px",
       }}
     >
       {country ? (
