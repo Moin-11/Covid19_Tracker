@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { GridCard } from "./gridCard";
 //Material-UI Imports
 import { gridStyle } from "../Material_Styles/gridStyles";
 
 import Grid from "@material-ui/core/Grid";
-import { fetchRelevantData } from "../api/apis";
 
 const GlobalGrid = ({ data: { confirmed, recovered, deaths } }) => {
   
