@@ -1,41 +1,29 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { GridCard } from "./gridCard";
 //Material-UI Imports
 import { gridStyle } from "../Material_Styles/gridStyles";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 
+import Grid from "@material-ui/core/Grid";
+import { fetchRelevantData } from "../api/apis";
 
-
-const GlobalGrid = () => {
-const classes = gridStyle();
-
-  return(
+const GlobalGrid = ({ data: { confirmed, recovered, deaths } }) => {
   
-  <div className={classes.root}>
-    <Grid container spacing={10}>
-      <Grid item  xs = {4}>
-        <Paper className={classes.paper}>
-         <h1>Confirmed Cases:</h1>
-         <h2>123456789</h2>
-          </Paper>
-      </Grid>
-      <Grid item  xs = {4}>
-        <Paper className={classes.paper}>
-         <h1>Recovered Cases:</h1>
-         <h2>123456789</h2>
-          </Paper>
-      </Grid>
-      <Grid item  xs = {4}>
-        <Paper className={classes.paper}>
-         <h1>Death Cases:</h1>
-         <h2>123456789</h2>
-          </Paper>
-      </Grid>
-      
-    </Grid>
-    </div>
-    );
-}
+  const classes = gridStyle();
 
-export default GlobalGrid
+  
+  if(!confirmed){
+    return <div>Loading</div>
+  }
+  
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={10}>
+        <GridCard title="confirmed" statistic={confirmed.value} />
+        <GridCard title="recovered" statistic={recovered.value} />
+        <GridCard title="deaths" statistic={deaths.value} />
+      </Grid>
+    </div>
+  );
+};
+
+export default GlobalGrid;
