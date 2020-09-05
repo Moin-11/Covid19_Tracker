@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import dropDownStyles from "../Material_Styles/dropDownMenuStyles";
 import { fetchCountries } from "../api/apis";
 //Material-UI Imports
-import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
+import {
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  Typography,
+} from "@material-ui/core";
 
 const DropDownMenu = ({ handleCountryChange }) => {
   const classes = dropDownStyles();
@@ -22,11 +28,12 @@ const DropDownMenu = ({ handleCountryChange }) => {
       style={{
         margin: "30px 0px 0px 0px",
         textAlign: "center",
-        backgroundColor: "greenyellow",
       }}
     >
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="select-a-country">Country</InputLabel>
+        <InputLabel id="select-a-country">
+          <Typography variant="h4">Country</Typography>
+        </InputLabel>
         <Select
           labelId="select-a-country"
           id="select-a-country"
@@ -36,12 +43,14 @@ const DropDownMenu = ({ handleCountryChange }) => {
           label="Country"
         >
           <MenuItem key={-1}>
-            <em>Global</em>
+            <em>
+              <Typography variant="h4">Global</Typography>
+            </em>
           </MenuItem>
           {countries.map((country, index) => {
             return (
               <MenuItem value={country} key={index}>
-                {country}
+                <Typography variant="h4">{country}</Typography>
               </MenuItem>
             );
           })}

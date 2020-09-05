@@ -4,6 +4,12 @@ import GlobalGrid from "./globalGrid";
 import DropDownMenu from "./dropdownMenu";
 import { fetchRelevantData, fetchTimelineStats } from "../api/apis";
 import ChartDisplay from "../Chart/chart";
+
+import theme from "../Material_Styles/GlobalTheme";
+import { responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles";
+
+const Theme = responsiveFontSizes(theme);
+
 const App = () => {
   const [country, setcountry] = useState("");
   const [data, setData] = useState({});
@@ -22,16 +28,19 @@ const App = () => {
     setData(await fetchRelevantData(country));
   };
   console.log(timelineStats);
+
   return (
     <div>
-      <Header />
-      <GlobalGrid data={data} />
-      <DropDownMenu handleCountryChange={handleCountryChange} />
-      <ChartDisplay
-        data={data}
-        timelineStats={timelineStats}
-        country={country}
-      />
+      <ThemeProvider theme={Theme}>
+        <Header />
+        <GlobalGrid data={data} />
+        <DropDownMenu handleCountryChange={handleCountryChange} />
+        <ChartDisplay
+          data={data}
+          timelineStats={timelineStats}
+          country={country}
+        />
+      </ThemeProvider>
     </div>
   );
 };

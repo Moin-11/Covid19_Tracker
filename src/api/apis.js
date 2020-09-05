@@ -15,7 +15,7 @@ export const fetchCountries = async () => {
 export const fetchRelevantData = async (country) => {
   let mutableURL = url;
 
-  // We check if country is present and modify the url. 
+  // We check if country is present and modify the url.
   //JSON-data structure is same
   // hence one function fetches both Global data in absence of country
   // and country data if country is present
@@ -25,7 +25,9 @@ export const fetchRelevantData = async (country) => {
   }
 
   try {
-    const { data: { confirmed, recovered, deaths, lastUpdate } } = await axios.get(mutableURL);
+    const {
+      data: { confirmed, recovered, deaths, lastUpdate },
+    } = await axios.get(mutableURL);
 
     return { confirmed, recovered, deaths, lastUpdate };
   } catch (error) {
@@ -34,9 +36,11 @@ export const fetchRelevantData = async (country) => {
 };
 
 export const fetchTimelineStats = async () => {
-const {data} = await axios.get(`${url}/daily`)
-const newData = data.map(({confirmed, recovered, deaths, reportDate: date}) => ({confirmed: confirmed.total, recovered: recovered.total, deaths: deaths.total, date 
-})) 
-return newData 
-
-}
+  const { data } = await axios.get(`${url}/daily`);
+  const newData = data.map(({ confirmed, deaths, reportDate: date }) => ({
+    confirmed: confirmed.total,
+    deaths: deaths.total,
+    date,
+  }));
+  return newData;
+};

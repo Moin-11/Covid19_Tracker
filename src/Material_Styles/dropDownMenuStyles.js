@@ -1,14 +1,11 @@
-import {makeStyles} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core";
 
 const dropDownStyles = makeStyles((theme) => ({
+  formControl: {
+    backgroundColor: "transparent",
+    margin: theme.spacing(),
+    minWidth: 200,
+  },
+}));
 
-   
-        formControl: {
-            backgroundColor: "lightblue",
-          margin: theme.spacing(),
-          minWidth: 200,
-        },
-    
-})) 
-
-export default dropDownStyles
+export default dropDownStyles;

@@ -1,56 +1,31 @@
 import React from "react";
-import { Bar, Line } from "react-chartjs-2";
+import BarChart from "./barChart";
+import GlobalLineChart from "./lineChart";
 
 const ChartDisplay = ({
   data: { confirmed, recovered, deaths },
   timelineStats,
   country,
 }) => {
-  // Charts
-  const displayBar = confirmed ? (
-    <Bar
-      data={{
-        labels: ["Confirmed", "Recovered", "Deaths"],
-        datasets: [
-          {
-            label: "People",
-            backgroundColor: ["blue", "green", "red"],
-            data: [confirmed.value, recovered.value, deaths.value],
-          },
-        ],
+  return (
+    <div
+      style={{
+        minHeight: "50vh",
+        width: "100%",
+        margin: "30px 20px 20px 30px",
       }}
-    />
-  ) : null;
-
-  const liner = (
-    <Line
-      data={{
-        labels: timelineStats?.map(({ date }) => date),
-        datasets: [
-          {
-            data: timelineStats?.map((stats) => stats?.confirmed),
-            label: "Confirmed",
-            borderColor: "green",
-            fill: true,
-          },
-          {
-            data: timelineStats?.map((stats) => stats?.recovered),
-            label: "Recovered",
-            borderColor: "blue",
-            fill: true,
-          },
-          {
-            data: timelineStats?.map((stats) => stats?.deaths),
-            label: "Deaths",
-            borderColor: "red",
-            fill: true,
-          },
-        ],
-      }}
-    />
+    >
+      {country ? (
+        <BarChart
+          confirmed={confirmed.value}
+          recovered={recovered.value}
+          deaths={deaths.value}
+        />
+      ) : (
+        <GlobalLineChart timelineStats={timelineStats} />
+      )}
+    </div>
   );
-
-  return <div>{country ? displayBar : liner}</div>;
 };
 
 export default ChartDisplay;

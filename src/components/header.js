@@ -1,22 +1,21 @@
-import React from 'react';
-
+import React from "react";
+import { Typography } from "@material-ui/core";
 
 const Header = () => {
-return(
+  return (
     <div
-    style={{
+      style={{
         display: "flex",
-        justifyContent: "center"
-        , alignItems: "center",
-        margin: "10px 0px 20px 0px"
-
-    }}
-    
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "0px 0px 60px 0px",
+        flexDirection: "column",
+      }}
     >
-       <h1>Covid-Tracker by Moin</h1>
+      <Typography variant="h2">COVID TRACKER BY MOIN</Typography>
+      <Typography variant="h3">moin11.dev@gmail.com</Typography>
     </div>
-);
+  );
+};
 
-}
-
-export default Header
+export default Header;
