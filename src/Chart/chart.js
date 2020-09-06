@@ -1,5 +1,5 @@
 import React from "react";
-import BarChart from "./barChart";
+import DoughnutChart from "./doughnutChart";
 import GlobalLineChart from "./lineChart";
 
 const ChartDisplay = ({
@@ -10,13 +10,11 @@ const ChartDisplay = ({
   return (
     <div
       style={{
-        height: "100%",
-        width: "100%",
-        margin: "60px 20px 20px 30px",
+        height: "70vh",
       }}
     >
       {country ? (
-        <BarChart
+        <DoughnutChart
           confirmed={confirmed.value}
           recovered={recovered.value}
           deaths={deaths.value}

@@ -4,7 +4,7 @@ const dropDownStyles = makeStyles((theme) => ({
   formControl: {
     backgroundColor: "transparent",
     margin: theme.spacing(2),
-    minWidth: "50%",
+    minWidth: "25%",
   },
 }));
 

@@ -4,9 +4,10 @@ import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import green from "@material-ui/core/colors/green";
 
-const BarChart = ({ confirmed, recovered, deaths }) => {
+const DoughnutChart = ({ confirmed, recovered, deaths }) => {
   return (
     <Doughnut
+      options={{ maintainAspectRatio: "false" }}
       data={{
         labels: ["Confirmed", "Recovered", "Deaths"],
         datasets: [
@@ -20,4 +21,4 @@ const BarChart = ({ confirmed, recovered, deaths }) => {
     />
   );
 };
-export default BarChart;
+export default DoughnutChart;
