@@ -26,8 +26,9 @@ const DropDownMenu = ({ handleCountryChange }) => {
   return (
     <div
       style={{
-        margin: "30px 0px 0px 0px",
-        textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <FormControl variant="outlined" className={classes.formControl}>
