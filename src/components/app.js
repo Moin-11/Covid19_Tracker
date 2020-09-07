@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Header from "./header";
 import GlobalGrid from "./globalGrid";
-import DropDownMenu from "./dropdownMenu";
 import { fetchRelevantData, fetchTimelineStats } from "../api/apis";
-import ChartDisplay from "../Chart/chart";
+import DataDisplay from "./DataDisplay";
 
 import theme from "../Material_Styles/GlobalTheme";
 import { responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles";
+import OptionsRow from "./OptionsRow";
 
 const Theme = responsiveFontSizes(theme);
 
@@ -14,6 +14,7 @@ const App = () => {
   const [country, setcountry] = useState("");
   const [data, setData] = useState({});
   const [timelineStats, setTimelineStats] = useState([]);
+  const [showChart, setShowChart] = useState(false);
 
   useEffect(() => {
     handleCountryChange();
@@ -27,15 +28,23 @@ const App = () => {
     setcountry(country);
     setData(await fetchRelevantData(country));
   };
-  console.log(timelineStats);
+
+  const handleDisplayChange = () => {
+    setShowChart(!showChart);
+  };
 
   return (
     <div>
       <ThemeProvider theme={Theme}>
         <Header />
         <GlobalGrid data={data} />
-        <DropDownMenu handleCountryChange={handleCountryChange} />
-        <ChartDisplay
+        <OptionsRow
+          handleCountryChange={handleCountryChange}
+          handleDisplayChange={handleDisplayChange}
+          showChart={showChart}
+        />
+        <DataDisplay
+          showChart={showChart}
           data={data}
           timelineStats={timelineStats}
           country={country}

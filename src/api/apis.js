@@ -44,3 +44,8 @@ export const fetchTimelineStats = async () => {
   }));
   return newData;
 };
+
+export const fetchTableData = async () => {
+  const { data } = await axios.get(`https://api.covid19api.com/summary`);
+  return data;
+};
