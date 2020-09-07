@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -10,29 +10,36 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { sortBy } from "lodash";
 
+import green from "@material-ui/core/colors/green";
+import blue from "@material-ui/core/colors/blue";
+import red from "@material-ui/core/colors/red";
+
 const columns = [
   { id: "ID", label: "ID", minWidth: 70 },
-  { id: "CountryName", label: "CountryName", minWidth: 140 },
+  { id: "CountryName", label: "CountryName", minWidth: 50, align: "center" },
   {
     id: "Confirmed",
     label: "Confirmed",
-    minWidth: 170,
-    align: "right",
+    minWidth: 140,
+    align: "left",
+    backgroundColor: green.A400,
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "Recovered",
     label: "Recovered",
-    minWidth: 170,
-    align: "right",
+    minWidth: 140,
+    align: "center",
+    backgroundColor: blue.A400,
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "Deaths",
     label: "Deaths",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
+    minWidth: 140,
+    align: "center",
+    backgroundColor: red.A400,
+    format: (value) => value.toLocaleString("en-US"),
   },
 ];
 
@@ -82,7 +89,10 @@ const TableDisplay = ({ tableData }) => {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{
+                    minWidth: column.minWidth,
+                    backgroundColor: column.backgroundColor,
+                  }}
                 >
                   {column.label}
                 </TableCell>
