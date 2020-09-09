@@ -14,9 +14,27 @@ const DataDisplay = ({ showChart, country, timelineStats, data }) => {
   }, []);
 
   return showChart ? (
-    <ChartDisplay data={data} timelineStats={timelineStats} country={country} />
+    <div
+      style={{
+        margin: "50px 20px 50px 20px",
+        height: "100vh",
+        width: "auto",
+      }}
+    >
+      <ChartDisplay
+        data={data}
+        timelineStats={timelineStats}
+        country={country}
+      />
+    </div>
   ) : (
-    <TableDisplay tableData={tableData} />
+    <div
+      style={{
+        margin: "30px 10px 10px 30px",
+      }}
+    >
+      <TableDisplay tableData={tableData} />
+    </div>
   );
 };
 export default DataDisplay;

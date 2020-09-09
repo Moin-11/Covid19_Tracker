@@ -5,8 +5,9 @@ import red from "@material-ui/core/colors/red";
 
 const GlobalLineChart = ({ timelineStats }) => {
   return (
+    
     <Line
-      options={{ maintainAspectRatio: false, responsive: true }}
+      options={{ maintainAspectRatio: false, }}
       data={{
         labels: timelineStats?.map(({ date }) => date),
         datasets: [

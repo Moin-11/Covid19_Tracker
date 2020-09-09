@@ -24,40 +24,32 @@ const DropDownMenu = ({ handleCountryChange }) => {
     fetch();
   }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="select-a-country">
-          <Typography variant="h4">Country</Typography>
-        </InputLabel>
-        <Select
-          labelId="select-a-country"
-          id="select-a-country"
-          onChange={(e) => {
-            handleCountryChange(e.target.value);
-          }}
-          label="Country"
-        >
-          <MenuItem key={-1}>
-            <em>
-              <Typography variant="h4">Global</Typography>
-            </em>
-          </MenuItem>
-          {countries.map((country, index) => {
-            return (
-              <MenuItem value={country} key={index}>
-                <Typography variant="h4">{country}</Typography>
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl variant="outlined" className={classes.formControl}>
+      <InputLabel id="select-a-country">
+        <Typography variant="h4">Country</Typography>
+      </InputLabel>
+      <Select
+        labelId="select-a-country"
+        id="select-a-country"
+        onChange={(e) => {
+          handleCountryChange(e.target.value);
+        }}
+        label="Country"
+      >
+        <MenuItem key={-1}>
+          <em>
+            <Typography variant="h4">Global</Typography>
+          </em>
+        </MenuItem>
+        {countries.map((country, index) => {
+          return (
+            <MenuItem value={country} key={index}>
+              <Typography variant="h4">{country}</Typography>
+            </MenuItem>
+          );
+        })}
+      </Select>
+    </FormControl>
   );
 };
 

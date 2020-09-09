@@ -6,20 +6,26 @@ import { gridStyle } from "../Material_Styles/gridStyles";
 import Grid from "@material-ui/core/Grid";
 
 const GlobalGrid = ({ data: { confirmed, recovered, deaths } }) => {
-  
   const classes = gridStyle();
 
-  
-  if(!confirmed){
-    return <div>Loading</div>
+  if (!confirmed) {
+    return <div>Loading</div>;
   }
-  
+
   return (
     <div className={classes.root}>
       <Grid container spacing={10}>
-        <GridCard title="confirmed" statistic={confirmed.value} />
-        <GridCard title="recovered" statistic={recovered.value} />
-        <GridCard title="deaths" statistic={deaths.value} />
+        <GridCard
+          title="Confirmed"
+          statistic={confirmed.value}
+          className="Confirmed"
+        />
+        <GridCard
+          title="Recovered"
+          statistic={recovered.value}
+          className="Recovered"
+        />
+        <GridCard title="Deaths" statistic={deaths.value} className="Deaths" />
       </Grid>
     </div>
   );

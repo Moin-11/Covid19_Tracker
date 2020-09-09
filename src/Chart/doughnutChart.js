@@ -1,13 +1,13 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import green from "@material-ui/core/colors/green";
 
 const DoughnutChart = ({ confirmed, recovered, deaths }) => {
   return (
-    <Doughnut
-      options={{ maintainAspectRatio: "false" }}
+    <Pie
+      options={{ maintainAspectRatio: "false", responsive: "true" }}
       data={{
         labels: ["Confirmed", "Recovered", "Deaths"],
         datasets: [

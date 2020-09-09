@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FormControlLabel, Switch } from "@material-ui/core";
+import { FormControlLabel, Switch, Typography } from "@material-ui/core";
 
 const DisplaySwitch = ({ showChart, handleDisplayChange }) => {
   return (
@@ -13,7 +13,11 @@ const DisplaySwitch = ({ showChart, handleDisplayChange }) => {
             name="display"
           />
         }
-        label="Display Chart"
+        label={
+          <Typography variant="h4">
+            {showChart ? "Display Table" : "Display Chart"}
+          </Typography>
+        }
       />
     </div>
   );

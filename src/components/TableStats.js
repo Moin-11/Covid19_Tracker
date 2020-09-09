@@ -13,10 +13,17 @@ import { sortBy } from "lodash";
 import green from "@material-ui/core/colors/green";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
+import Common from "@material-ui/core/colors/common";
 
 const columns = [
   { id: "ID", label: "ID", minWidth: 70 },
-  { id: "CountryName", label: "CountryName", minWidth: 50, align: "center" },
+  {
+    id: "CountryName",
+    label: "CountryName",
+    minWidth: "5%",
+    align: "left",
+    backgroundColor: Common.white,
+  },
   {
     id: "Confirmed",
     label: "Confirmed",
@@ -29,7 +36,7 @@ const columns = [
     id: "Recovered",
     label: "Recovered",
     minWidth: 140,
-    align: "center",
+    align: "left",
     backgroundColor: blue.A400,
     format: (value) => value.toLocaleString("en-US"),
   },
@@ -37,7 +44,7 @@ const columns = [
     id: "Deaths",
     label: "Deaths",
     minWidth: 140,
-    align: "center",
+    align: "left",
     backgroundColor: red.A400,
     format: (value) => value.toLocaleString("en-US"),
   },
@@ -48,7 +55,7 @@ const useStyles = makeStyles({
     width: "100%",
   },
   container: {
-    maxHeight: 440,
+    maxHeight: "100vh",
   },
 });
 
@@ -92,6 +99,9 @@ const TableDisplay = ({ tableData }) => {
                   style={{
                     minWidth: column.minWidth,
                     backgroundColor: column.backgroundColor,
+                    color: column.textColor,
+                    fontStyle: "Share",
+                    fontWeight: "800",
                   }}
                 >
                   {column.label}
@@ -108,7 +118,16 @@ const TableDisplay = ({ tableData }) => {
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          style={{
+                            backgroundColor: column.backgroundColor,
+                            color: column.textColor,
+                            fontStyle: "Share",
+                            fontWeight: "600",
+                          }}
+                        >
                           {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
