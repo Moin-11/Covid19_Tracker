@@ -19,8 +19,8 @@ const columns = [
   { id: "ID", label: "ID", minWidth: 70 },
   {
     id: "CountryName",
-    label: "CountryName",
-    minWidth: "5%",
+    label: "Country Name",
+    minWidth: 140,
     align: "left",
     backgroundColor: Common.white,
   },
@@ -30,6 +30,7 @@ const columns = [
     minWidth: 140,
     align: "left",
     backgroundColor: green.A400,
+    contentColor: green.A100,
     format: (value) => value.toLocaleString("en-US"),
   },
   {
@@ -38,6 +39,7 @@ const columns = [
     minWidth: 140,
     align: "left",
     backgroundColor: blue.A400,
+    contentColor: blue.A100,
     format: (value) => value.toLocaleString("en-US"),
   },
   {
@@ -46,6 +48,7 @@ const columns = [
     minWidth: 140,
     align: "left",
     backgroundColor: red.A400,
+    contentColor: red.A100,
     format: (value) => value.toLocaleString("en-US"),
   },
 ];
@@ -100,8 +103,9 @@ const TableDisplay = ({ tableData }) => {
                     minWidth: column.minWidth,
                     backgroundColor: column.backgroundColor,
                     color: column.textColor,
-                    fontStyle: "Share",
-                    fontWeight: "800",
+                    fontFamily: "Share",
+                    fontStyle: "bold",
+                    fontSize: "2rem",
                   }}
                 >
                   {column.label}
@@ -122,10 +126,11 @@ const TableDisplay = ({ tableData }) => {
                           key={column.id}
                           align={column.align}
                           style={{
-                            backgroundColor: column.backgroundColor,
+                            backgroundColor: column.contentColor,
                             color: column.textColor,
-                            fontStyle: "Share",
-                            fontWeight: "600",
+                            fontFamily: "Share",
+                            fontSize: "1.5rem",
+                            fontWeight: "400",
                           }}
                         >
                           {column.format && typeof value === "number"

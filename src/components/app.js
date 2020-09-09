@@ -7,7 +7,7 @@ import DataDisplay from "./DataDisplay";
 import theme from "../Material_Styles/GlobalTheme";
 import { responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles";
 import OptionsRow from "./OptionsRow";
-
+import CSSBaseLine from "@material-ui/core/CssBaseline";
 const Theme = responsiveFontSizes(theme);
 
 const App = () => {
@@ -36,6 +36,7 @@ const App = () => {
   return (
     <div>
       <ThemeProvider theme={Theme}>
+        <CSSBaseLine />
         <Header />
         <GlobalGrid data={data} />
         <OptionsRow
