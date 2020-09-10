@@ -8,13 +8,17 @@ import {
   FormControl,
   Select,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core";
 
 const DropDownMenu = ({ handleCountryChange }) => {
   const classes = dropDownStyles();
 
   const [countries, setCountries] = useState([]);
-
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("lg"));
+  const dropDownProps = {
+    variant: isSmallScreen ? "h5" : "h4",
+  };
   useEffect(() => {
     const fetch = async () => {
       const data = await fetchCountries();
@@ -45,7 +49,7 @@ const DropDownMenu = ({ handleCountryChange }) => {
         {countries.map((country, index) => {
           return (
             <MenuItem value={country} key={index}>
-              <Typography variant="h4">{country}</Typography>
+              <Typography {...dropDownProps}>{country}</Typography>
             </MenuItem>
           );
         })}

@@ -11,7 +11,7 @@ const OptionsRow = ({
     <div
       style={{
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignItems: "center",
       }}
     >

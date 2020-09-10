@@ -33,7 +33,7 @@ const theme = createMuiTheme({
     },
     h5: {
       fontFamily: "Share",
-      fontSize: "0.5rem",
+      fontSize: "0.7rem",
       color: common.black,
     },
   },
