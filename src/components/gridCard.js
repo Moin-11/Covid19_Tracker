@@ -9,7 +9,10 @@ export const GridCard = ({ className, title, statistic }) => {
 
   return (
     <Grid item xs={11} md={4}>
-      <Paper className={cx(classes.paper, classes.Confirmed)}>
+      <Paper
+        variant="outlined"
+        className={cx(classes.paper, classes[`${className}`])}
+      >
         <Typography variant="h1">{title}</Typography>
         <Typography variant="h2">
           <CountUp start={0} end={statistic} duration={2} />

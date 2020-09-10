@@ -10,22 +10,20 @@ export const gridStyle = makeStyles((theme) => ({
 
     padding: "0px 0px",
     margin: "50px 20px 50px 20px !important",
-
-    borderWidth: "100px",
-    borderBottomColor: "green",
   },
   paper: {
+    borderBottomWidth: 10,
     padding: theme.spacing(5),
     textAlign: "center",
     justifyItems: "top",
   },
 
   Confirmed: {
-    borderBottomColor: Blue.A400,
+    borderBottomColor: Green.A400,
   },
 
   Recovered: {
-    borderBottomColor: Green.A400,
+    borderBottomColor: Blue.A100,
   },
 
   Deaths: {
