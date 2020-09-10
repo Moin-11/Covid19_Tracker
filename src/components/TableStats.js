@@ -9,7 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { sortBy } from "lodash";
-
+import { Typography, useMediaQuery } from "@material-ui/core";
 import green from "@material-ui/core/colors/green";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
@@ -109,7 +109,7 @@ const TableDisplay = ({ tableData }) => {
   ).reverse();
 
   const rows = CountriesbyTotalConfirmed?.map((country, index) => ({
-    ID: index,
+    ID: ++index,
     CountryName: country.Country,
     Confirmed: country.TotalConfirmed,
     Recovered: country.TotalRecovered,
@@ -119,6 +119,7 @@ const TableDisplay = ({ tableData }) => {
     NewDeaths: country.NewDeaths,
   }));
 
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -133,12 +134,11 @@ const TableDisplay = ({ tableData }) => {
                     minWidth: column.minWidth,
                     backgroundColor: column.backgroundColor,
                     color: column.textColor,
-                    fontFamily: "Share",
-                    fontStyle: "bold",
-                    fontSize: "1.5rem",
                   }}
                 >
-                  {column.label}
+                  <Typography variant={isSmallScreen ? "h4" : "h3"}>
+                    {column.label}
+                  </Typography>
                 </TableCell>
               ))}
             </TableRow>
@@ -158,14 +158,13 @@ const TableDisplay = ({ tableData }) => {
                           style={{
                             backgroundColor: column.contentColor,
                             color: column.textColor,
-                            fontFamily: "Share",
-                            fontSize: "1.5rem",
-                            fontWeight: "400",
                           }}
                         >
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          <Typography variant={isSmallScreen ? "h5" : "h4"}>
+                            {column.format && typeof value === "number"
+                              ? column.format(value)
+                              : value}
+                          </Typography>
                         </TableCell>
                       );
                     })}

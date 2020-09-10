@@ -30,7 +30,7 @@ const DropDownMenu = ({ handleCountryChange }) => {
   return (
     <FormControl variant="outlined" className={classes.formControl}>
       <InputLabel id="select-a-country">
-        <Typography variant="h4">Country</Typography>
+        <Typography {...dropDownProps}>Country</Typography>
       </InputLabel>
       <Select
         labelId="select-a-country"

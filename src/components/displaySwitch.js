@@ -1,8 +1,15 @@
 import React from "react";
 
-import { FormControlLabel, Switch, Typography } from "@material-ui/core";
+import {
+  FormControlLabel,
+  Switch,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core";
 
 const DisplaySwitch = ({ showChart, handleDisplayChange }) => {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("md"));
+
   return (
     <div>
       <FormControlLabel
@@ -14,7 +21,7 @@ const DisplaySwitch = ({ showChart, handleDisplayChange }) => {
           />
         }
         label={
-          <Typography variant="h4">
+          <Typography variant={isSmallScreen ? "h5" : "h4"}>
             {showChart ? "Display Table" : "Display Chart"}
           </Typography>
         }
