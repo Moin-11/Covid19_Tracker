@@ -9,7 +9,7 @@ export const gridStyle = makeStyles((theme) => ({
     flexGrow: 1,
 
     padding: "0px 0px",
-    margin: "50px 20px 50px 20px !important",
+    margin: "50px 10px 50px 10px !important",
   },
   paper: {
     borderBottomWidth: 10,

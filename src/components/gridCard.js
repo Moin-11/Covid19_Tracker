@@ -8,7 +8,7 @@ export const GridCard = ({ className, title, statistic }) => {
   const classes = gridStyle();
 
   return (
-    <Grid item xs={11} md={4}>
+    <Grid item xs={12} md={4}>
       <Paper
         variant="outlined"
         className={cx(classes.paper, classes[`${className}`])}
