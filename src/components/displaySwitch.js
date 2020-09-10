@@ -22,7 +22,7 @@ const DisplaySwitch = ({ showChart, handleDisplayChange }) => {
         }
         label={
           <Typography variant={isSmallScreen ? "h5" : "h4"}>
-            {showChart ? "Display Table" : "Display Chart"}
+            Display Chart
           </Typography>
         }
       />
