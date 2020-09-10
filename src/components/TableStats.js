@@ -19,14 +19,14 @@ const columns = [
   { id: "ID", label: "ID", minWidth: 70 },
   {
     id: "CountryName",
-    label: "Country Name",
+    label: "Country",
     minWidth: 140,
     align: "left",
     backgroundColor: Common.white,
   },
   {
     id: "Confirmed",
-    label: "Confirmed",
+    label: "Total Confirmed",
     minWidth: 140,
     align: "left",
     backgroundColor: green.A400,
@@ -35,7 +35,7 @@ const columns = [
   },
   {
     id: "Recovered",
-    label: "Recovered",
+    label: "Total Recovered",
     minWidth: 140,
     align: "left",
     backgroundColor: blue.A400,
@@ -44,11 +44,38 @@ const columns = [
   },
   {
     id: "Deaths",
-    label: "Deaths",
+    label: "Total Deaths",
     minWidth: 140,
     align: "left",
     backgroundColor: red.A400,
     contentColor: red.A100,
+    format: (value) => value.toLocaleString("en-US"),
+  },
+  {
+    id: "NewConfirmed",
+    label: "New Confirmed",
+    minWidth: 140,
+    align: "left",
+    backgroundColor: green.A400,
+    contentColor: green.A200,
+    format: (value) => value.toLocaleString("en-US"),
+  },
+  {
+    id: "NewRecovered",
+    label: "New Recovered",
+    minWidth: 140,
+    align: "left",
+    backgroundColor: blue.A400,
+    contentColor: blue.A200,
+    format: (value) => value.toLocaleString("en-US"),
+  },
+  {
+    id: "NewDeaths",
+    label: "New Deaths",
+    minWidth: 140,
+    align: "left",
+    backgroundColor: red.A400,
+    contentColor: red.A200,
     format: (value) => value.toLocaleString("en-US"),
   },
 ];
@@ -65,7 +92,7 @@ const useStyles = makeStyles({
 const TableDisplay = ({ tableData }) => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(50);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -81,12 +108,15 @@ const TableDisplay = ({ tableData }) => {
     "TotalConfirmed"
   ).reverse();
 
-  const rows = CountriesbyTotalConfirmed?.map((country) => ({
-    ID: country.CountryCode,
+  const rows = CountriesbyTotalConfirmed?.map((country, index) => ({
+    ID: index,
     CountryName: country.Country,
     Confirmed: country.TotalConfirmed,
     Recovered: country.TotalRecovered,
     Deaths: country.TotalDeaths,
+    NewConfirmed: country.NewConfirmed,
+    NewRecovered: country.NewRecovered,
+    NewDeaths: country.NewDeaths,
   }));
 
   return (
@@ -105,7 +135,7 @@ const TableDisplay = ({ tableData }) => {
                     color: column.textColor,
                     fontFamily: "Share",
                     fontStyle: "bold",
-                    fontSize: "2rem",
+                    fontSize: "1.5rem",
                   }}
                 >
                   {column.label}
@@ -146,7 +176,7 @@ const TableDisplay = ({ tableData }) => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[50, 100, 150]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}

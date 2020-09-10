@@ -35,6 +35,7 @@ const DropDownMenu = ({ handleCountryChange }) => {
           handleCountryChange(e.target.value);
         }}
         label="Country"
+        autoWidth
       >
         <MenuItem key={-1}>
           <em>
