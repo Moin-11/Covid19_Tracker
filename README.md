@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# LIVE COVID-19 Tracker App using React and Material-UI
+### Visit [https://moin11-covidstats.netlify.app/](https://moin11-covidstats.netlify.app/) to Preview
+
 ## Available Scripts
 
 In the project directory, you can run:
